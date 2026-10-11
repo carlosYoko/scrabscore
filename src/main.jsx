@@ -196,7 +196,7 @@ function App() {
       <header className="header">
         <div className="brand">
           <img className="brand-logo" src="/scrabscore-logo.svg" alt="SCRABSCORE" width="600" height="68" />
-          <h1>{t.title}</h1>
+          <h1>{game.players.length === 0 ? t.setupTitle : t.title}</h1>
         </div>
         <ThemeControl theme={game.theme} t={t}
           onChange={(theme) => setGame((previous) => ({ ...previous, theme }))} />

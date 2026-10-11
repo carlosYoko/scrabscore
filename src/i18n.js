@@ -1,6 +1,7 @@
 export const dictionaries = {
   es: {
     title: 'Puntuaciones',
+    setupTitle: 'Jugadores',
     newGame: 'Nueva partida',
     setupHint: '¡Añade jugadores y empieza a sumar!',
     playerCount: 'Número de jugadores',
@@ -29,6 +30,7 @@ export const dictionaries = {
   },
   en: {
     title: 'Scores',
+    setupTitle: 'Players',
     newGame: 'New game',
     setupHint: 'Add players and start scoring!',
     playerCount: 'Number of players',
@@ -57,6 +59,7 @@ export const dictionaries = {
   },
   ca: {
     title: 'Puntuacions',
+    setupTitle: 'Jugadors',
     newGame: 'Nova partida',
     setupHint: 'Afegeix jugadors i comença a sumar!',
     playerCount: 'Nombre de jugadors',
