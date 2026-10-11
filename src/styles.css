@@ -10,6 +10,7 @@
   --accent-hover: #1b4a32;
   --soft: #eaf2eb;
   --error: #a52929;
+  --board-opacity: .24;
   background: var(--bg);
   color: var(--text);
   font-synthesis: none;
@@ -26,6 +27,7 @@
   --accent-hover: #b6e4c3;
   --soft: #2a3a2e;
   --error: #ffaaaa;
+  --board-opacity: .14;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,11 +42,23 @@
     --accent-hover: #b6e4c3;
     --soft: #2a3a2e;
     --error: #ffaaaa;
+    --board-opacity: .14;
   }
 }
 
 * { box-sizing: border-box; }
 body { margin: 0; min-width: 280px; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('/scrabble-board.svg') center / max(620px, 85vmin) no-repeat;
+  filter: blur(3px);
+  opacity: var(--board-opacity);
+  pointer-events: none;
+  z-index: 0;
+}
+#root { position: relative; z-index: 1; }
 button, input, select { font: inherit; }
 button, select { cursor: pointer; }
 button, input, select { min-height: 46px; border: 1px solid var(--border); border-radius: 10px; }

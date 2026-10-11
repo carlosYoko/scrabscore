@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="660" viewBox="0 0 660 660">
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#e2dfc5"/>
+      <path d="M40 0H0V40" fill="none" stroke="#7d9076" stroke-width="2"/>
+    </pattern>
+    <g id="tile">
+      <rect width="36" height="36" rx="4" fill="#e9c98c" stroke="#a4804a" stroke-width="1.5"/>
+    </g>
+  </defs>
+  <rect width="660" height="660" rx="20" fill="#72866b"/>
+  <rect x="18" y="18" width="624" height="624" rx="6" fill="#f0e4bc"/>
+  <g transform="translate(30 30)">
+    <rect width="600" height="600" fill="url(#grid)"/>
+    <g fill="#bc6664">
+      <rect width="40" height="40"/><rect x="280" width="40" height="40"/><rect x="560" width="40" height="40"/>
+      <rect y="280" width="40" height="40"/><rect x="560" y="280" width="40" height="40"/>
+      <rect y="560" width="40" height="40"/><rect x="280" y="560" width="40" height="40"/><rect x="560" y="560" width="40" height="40"/>
+    </g>
+    <g fill="#cb9894">
+      <rect x="40" y="40" width="40" height="40"/><rect x="80" y="80" width="40" height="40"/>
+      <rect x="120" y="120" width="40" height="40"/><rect x="160" y="160" width="40" height="40"/>
+      <rect x="520" y="40" width="40" height="40"/><rect x="480" y="80" width="40" height="40"/>
+      <rect x="440" y="120" width="40" height="40"/><rect x="400" y="160" width="40" height="40"/>
+      <rect x="40" y="520" width="40" height="40"/><rect x="80" y="480" width="40" height="40"/>
+      <rect x="120" y="440" width="40" height="40"/><rect x="160" y="400" width="40" height="40"/>
+      <rect x="520" y="520" width="40" height="40"/><rect x="480" y="480" width="40" height="40"/>
+      <rect x="440" y="440" width="40" height="40"/><rect x="400" y="400" width="40" height="40"/>
+      <rect x="280" y="280" width="40" height="40"/>
+    </g>
+    <g fill="#739ca9">
+      <rect x="200" y="40" width="40" height="40"/><rect x="360" y="40" width="40" height="40"/>
+      <rect x="40" y="200" width="40" height="40"/><rect x="200" y="200" width="40" height="40"/>
+      <rect x="360" y="200" width="40" height="40"/><rect x="520" y="200" width="40" height="40"/>
+      <rect x="40" y="360" width="40" height="40"/><rect x="200" y="360" width="40" height="40"/>
+      <rect x="360" y="360" width="40" height="40"/><rect x="520" y="360" width="40" height="40"/>
+      <rect x="200" y="520" width="40" height="40"/><rect x="360" y="520" width="40" height="40"/>
+    </g>
+    <g fill="#adc9c9">
+      <rect x="120" width="40" height="40"/><rect x="440" width="40" height="40"/>
+      <rect y="120" width="40" height="40"/><rect x="560" y="120" width="40" height="40"/>
+      <rect x="240" y="240" width="40" height="40"/><rect x="320" y="240" width="40" height="40"/>
+      <rect x="240" y="320" width="40" height="40"/><rect x="320" y="320" width="40" height="40"/>
+      <rect y="440" width="40" height="40"/><rect x="560" y="440" width="40" height="40"/>
+      <rect x="120" y="560" width="40" height="40"/><rect x="440" y="560" width="40" height="40"/>
+    </g>
+    <g transform="translate(122 282)" font-family="Arial, sans-serif" font-size="25" font-weight="bold" fill="#493b28" text-anchor="middle">
+      <use href="#tile"/><text x="18" y="27">S</text>
+      <use href="#tile" x="40"/><text x="58" y="27">C</text>
+      <use href="#tile" x="80"/><text x="98" y="27">R</text>
+      <use href="#tile" x="120"/><text x="138" y="27">A</text>
+      <use href="#tile" x="160"/><text x="178" y="27">B</text>
+      <use href="#tile" x="200"/><text x="218" y="27">B</text>
+      <use href="#tile" x="240"/><text x="258" y="27">L</text>
+      <use href="#tile" x="280"/><text x="298" y="27">E</text>
+      <use href="#tile" x="120" y="40"/><text x="138" y="67">V</text>
+      <use href="#tile" x="120" y="80"/><text x="138" y="107">E</text>
+    </g>
+  </g>
+</svg>
