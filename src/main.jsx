@@ -176,7 +176,10 @@ function App() {
   return (
     <main className={`app${game.players.length === 2 ? ' two-players' : ''}`}>
       <header className="header">
-        <div><p className="eyebrow">SCRABSCORE</p><h1>Puntuaciones</h1></div>
+        <div className="brand">
+          <img className="brand-logo" src="/scrabscore-logo.svg" alt="SCRABSCORE" width="600" height="68" />
+          <h1>Puntuaciones</h1>
+        </div>
         <ThemeControl theme={game.theme}
           onChange={(theme) => setGame((previous) => ({ ...previous, theme }))} />
       </header>

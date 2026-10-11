@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="68" viewBox="0 0 600 68" role="img" aria-labelledby="title">
+  <title id="title">SCRABSCORE, letras en fichas blancas de Scrabble</title>
+  <defs>
+    <linearGradient id="white-tile" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f0eee8"/>
+    </linearGradient>
+    <g id="tile">
+      <rect x="2" y="5" width="54" height="58" rx="6" fill="#b8b5aa"/>
+      <rect x="2" y="2" width="54" height="58" rx="6" fill="url(#white-tile)" stroke="#d4d0c5"/>
+      <path d="M9 5H49" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#292d28">
+    <g font-size="36" font-weight="600" text-anchor="middle">
+      <g><use href="#tile"/><text x="29" y="43">S</text></g>
+      <g transform="translate(60)"><use href="#tile"/><text x="29" y="43">C</text></g>
+      <g transform="translate(120)"><use href="#tile"/><text x="29" y="43">R</text></g>
+      <g transform="translate(180)"><use href="#tile"/><text x="29" y="43">A</text></g>
+      <g transform="translate(240)"><use href="#tile"/><text x="29" y="43">B</text></g>
+      <g transform="translate(300)"><use href="#tile"/><text x="29" y="43">S</text></g>
+      <g transform="translate(360)"><use href="#tile"/><text x="29" y="43">C</text></g>
+      <g transform="translate(420)"><use href="#tile"/><text x="29" y="43">O</text></g>
+      <g transform="translate(480)"><use href="#tile"/><text x="29" y="43">R</text></g>
+      <g transform="translate(540)"><use href="#tile"/><text x="29" y="43">E</text></g>
+    </g>
+    <g font-size="11" text-anchor="end">
+      <text x="49" y="54">1</text><text x="109" y="54">3</text>
+      <text x="169" y="54">1</text><text x="229" y="54">1</text>
+      <text x="289" y="54">3</text><text x="349" y="54">1</text>
+      <text x="409" y="54">3</text><text x="469" y="54">1</text>
+      <text x="529" y="54">1</text><text x="589" y="54">1</text>
+    </g>
+  </g>
+</svg>
