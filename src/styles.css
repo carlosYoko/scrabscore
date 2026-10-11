@@ -1,0 +1,121 @@
+:root {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color-scheme: light;
+  --bg: #f4f5f0;
+  --surface: #ffffff;
+  --text: #202b24;
+  --muted: #647068;
+  --border: #dce2da;
+  --accent: #286044;
+  --accent-hover: #1b4a32;
+  --soft: #eaf2eb;
+  --error: #a52929;
+  background: var(--bg);
+  color: var(--text);
+  font-synthesis: none;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #151b17;
+  --surface: #1f2822;
+  --text: #ecf1eb;
+  --muted: #a4b1a7;
+  --border: #37443a;
+  --accent: #9bd3ac;
+  --accent-hover: #b6e4c3;
+  --soft: #2a3a2e;
+  --error: #ffaaaa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    color-scheme: dark;
+    --bg: #151b17;
+    --surface: #1f2822;
+    --text: #ecf1eb;
+    --muted: #a4b1a7;
+    --border: #37443a;
+    --accent: #9bd3ac;
+    --accent-hover: #b6e4c3;
+    --soft: #2a3a2e;
+    --error: #ffaaaa;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 280px; }
+button, input, select { font: inherit; }
+button, select { cursor: pointer; }
+button, input, select { min-height: 46px; border: 1px solid var(--border); border-radius: 10px; }
+button { padding: 10px 16px; background: var(--surface); color: var(--text); font-weight: 600; }
+button:hover { background: var(--soft); }
+input, select { background: var(--surface); color: var(--text); padding: 10px 12px; width: 100%; }
+input::placeholder { color: var(--muted); opacity: 1; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3, p { margin: 0; }
+h1 { font-size: clamp(1.6rem, 4vw, 2rem); letter-spacing: -.04em; }
+h2 { font-size: 1.2rem; }
+h3 { font-size: .9rem; font-weight: 600; }
+label { display: grid; gap: 7px; font-size: .9rem; font-weight: 500; }
+.app { width: min(100% - 32px, 960px); margin: 0 auto; padding: 32px 0; }
+.header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 28px; }
+.eyebrow { color: var(--accent); font-size: .72rem; font-weight: 750; letter-spacing: .18em; margin-bottom: 5px; }
+.theme-control { position: relative; flex-shrink: 0; }
+.theme-control button { color: var(--muted); font-size: .9rem; }
+.theme-control select { position: absolute; top: calc(100% + 8px); right: 0; width: 150px; font-size: 1rem; z-index: 1; }
+.panel { padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: 18px; }
+.muted { color: var(--muted); }
+.setup { max-width: 480px; margin: 0 auto; }
+.setup > p { margin-top: 8px; line-height: 1.5; }
+fieldset { padding: 0; margin: 24px 0; border: 0; }
+legend { font-size: .9rem; margin-bottom: 10px; }
+.player-count { display: flex; gap: 10px; }
+.player-count button { flex: 1; }
+.player-count .selected { color: var(--accent); background: var(--soft); border-color: var(--accent); }
+.names { display: grid; gap: 16px; }
+.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.primary:hover { background: var(--accent-hover); }
+.start { width: 100%; margin-top: 24px; }
+.game-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 16px; font-size: .85rem; }
+.new-game { font-size: .85rem; }
+.players { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.player { min-width: 0; }
+.player-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 22px; }
+.player-heading h2 { overflow-wrap: anywhere; }
+.total { text-align: right; flex-shrink: 0; }
+.total strong { display: block; font-size: clamp(1.6rem, 5vw, 2.4rem); color: var(--accent); line-height: 1.1; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; max-width: 210px; }
+.total span { font-size: .75rem; color: var(--muted); }
+.score-form > label { margin-bottom: 8px; }
+.score-input { display: flex; gap: 8px; }
+.score-input input { min-width: 0; }
+.history { border-top: 1px solid var(--border); margin-top: 16px; }
+.history summary { min-height: 44px; padding: 12px 0; cursor: pointer; font-size: .9rem; font-weight: 600; }
+.history summary::marker { color: var(--muted); }
+.history[open] { padding-bottom: 4px; }
+.empty { font-size: .85rem; margin-top: 14px; }
+.score-list { list-style: none; padding: 0; margin: 12px 0 0; max-height: 260px; overflow-y: auto; scrollbar-width: thin; }
+.score-list li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 2px; font-size: .9rem; border-bottom: 1px solid var(--border); }
+.score-list strong { font-variant-numeric: tabular-nums; }
+.undo { font-size: .8rem; margin-top: 12px; color: var(--muted); }
+.error, .notice { color: var(--error); font-size: .85rem; line-height: 1.5; }
+.error { margin-top: 8px; }
+.notice { margin-bottom: 20px; }
+
+@media (max-width: 600px) {
+  .app { padding-top: 20px; }
+  .players { grid-template-columns: 1fr; }
+  .panel { padding: 20px; }
+  .header { margin-bottom: 24px; gap: 10px; }
+  .game-toolbar { align-items: center; }
+  .game-toolbar p { max-width: 140px; line-height: 1.5; }
+
+  /* Keep the two-player board compact without hiding overflowing content. */
+  .two-players { padding: 12px 0; }
+  .two-players .header { margin-bottom: 12px; }
+  .two-players .game-toolbar { margin-bottom: 12px; }
+  .two-players .players { gap: 12px; }
+  .two-players .player { padding: 12px 16px 4px; }
+  .two-players .player-heading { margin-bottom: 10px; }
+  .two-players .history { margin-top: 12px; }
+}
