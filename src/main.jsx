@@ -119,9 +119,19 @@ function PlayerCard({ player, index, onAdd, onUndo, t }) {
   );
 }
 
-function ThemeControl({ theme, onChange, t }) {
+function SettingsMenu({ theme, language, onChange, t }) {
   const [open, setOpen] = useState(false);
   const trigger = useRef(null);
+  const container = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    function outsideClick(event) {
+      if (!container.current?.contains(event.target)) setOpen(false);
+    }
+    document.addEventListener('pointerdown', outsideClick);
+    return () => document.removeEventListener('pointerdown', outsideClick);
+  }, [open]);
 
   function close() {
     setOpen(false);
@@ -129,31 +139,51 @@ function ThemeControl({ theme, onChange, t }) {
   }
 
   return (
-    <div className="theme-control">
-      <button ref={trigger} type="button" aria-expanded={open} aria-controls="theme-select"
+    <div className="settings-control" ref={container}
+      onBlur={(event) => {
+        if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) setOpen(false);
+      }}
+      onKeyDown={(event) => { if (event.key === 'Escape') close(); }}>
+      <button ref={trigger} type="button" aria-expanded={open} aria-controls="settings-panel"
         onClick={() => setOpen((previous) => !previous)}>
-        <span aria-hidden="true">⚙</span> {t.theme}
+        <span aria-hidden="true">⚙</span> {t.menu}
       </button>
       {open && (
-        <select id="theme-select" aria-label={t.chooseTheme} autoFocus value={theme}
-          onBlur={(event) => { if (event.relatedTarget !== trigger.current) setOpen(false); }}
-          onKeyDown={(event) => { if (event.key === 'Escape') close(); }}
-          onChange={(event) => { onChange(event.target.value); close(); }}>
-          <option value="system">{t.system}</option>
-          <option value="light">{t.light}</option>
-          <option value="dark">{t.dark}</option>
-        </select>
+        <div id="settings-panel" className="settings-panel">
+          <label>{t.theme}
+            <select autoFocus value={theme}
+              onChange={(event) => { onChange('theme', event.target.value); close(); }}>
+              <option value="system">{t.system}</option>
+              <option value="light">{t.light}</option>
+              <option value="dark">{t.dark}</option>
+            </select>
+          </label>
+          <label>{t.language}
+            <select value={language}
+              onChange={(event) => { onChange('language', event.target.value); close(); }}>
+              <option value="system">{t.system}</option>
+              <option value="es" lang="es">Castellano</option>
+              <option value="en" lang="en">English</option>
+              <option value="ca" lang="ca">Català</option>
+            </select>
+          </label>
+        </div>
       )}
     </div>
   );
 }
 
 function App() {
-  const [language, setLanguage] = useState(deviceLanguage);
+  const [initial] = useState(readSavedGame);
+  const [game, setGame] = useState(initial.state);
+  const [storageError, setStorageError] = useState(initial.error);
+  const [deviceLocale, setDeviceLocale] = useState(deviceLanguage);
+  const preference = game.language ?? 'system';
+  const language = preference === 'system' ? deviceLocale : preference;
   const t = dictionaries[language];
 
   useEffect(() => {
-    const updateLanguage = () => setLanguage(deviceLanguage());
+    const updateLanguage = () => setDeviceLocale(deviceLanguage());
     window.addEventListener('languagechange', updateLanguage);
     return () => window.removeEventListener('languagechange', updateLanguage);
   }, []);
@@ -163,10 +193,6 @@ function App() {
     document.title = `SCRABSCORE · ${t.title}`;
     document.querySelector('meta[name="description"]')?.setAttribute('content', t.description);
   }, [language, t]);
-
-  const [initial] = useState(readSavedGame);
-  const [game, setGame] = useState(initial.state);
-  const [storageError, setStorageError] = useState(initial.error);
 
   useEffect(() => {
     document.documentElement.dataset.theme = game.theme;
@@ -198,8 +224,8 @@ function App() {
           <img className="brand-logo" src="/scrabscore-logo.svg" alt="SCRABSCORE" width="600" height="68" />
           <h1>{game.players.length === 0 ? t.setupTitle : t.title}</h1>
         </div>
-        <ThemeControl theme={game.theme} t={t}
-          onChange={(theme) => setGame((previous) => ({ ...previous, theme }))} />
+        <SettingsMenu theme={game.theme} language={preference} t={t}
+          onChange={(key, value) => setGame((previous) => ({ ...previous, [key]: value }))} />
       </header>
       {storageError && <p className="notice" role="alert">{t[storageError]}</p>}
       {game.players.length === 0 ? <Setup t={t} onStart={(players) => setGame((previous) => ({ ...previous, players }))} /> : (
