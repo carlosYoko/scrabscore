@@ -39,6 +39,17 @@ test('admite entre dos y cuatro jugadores y los tres temas', () => {
   assert.equal(isValidState({ ...game, players: Array(5).fill(game.players[0]) }), false);
 });
 
+test('guarda la preferencia de idioma sin invalidar partidas antiguas', () => {
+  assert.ok(isValidState(game));
+  for (const language of ['system', 'es', 'en', 'ca']) {
+    const saved = { ...game, language };
+    assert.ok(isValidState(saved));
+    assert.deepEqual(loadState({ getItem: () => JSON.stringify(saved) }), saved);
+  }
+  assert.equal(isValidState({ ...game, language: 'fr' }), false);
+  assert.equal(isValidState({ ...game, language: null }), false);
+});
+
 test('rechaza partidas corruptas', () => {
   for (const value of [null, {}, { ...game, theme: 'invalid' },
     { ...game, players: [{ name: '', scores: [] }, game.players[1]] },

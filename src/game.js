@@ -1,10 +1,11 @@
 export const STORAGE_KEY = 'scrabble-score-v1';
-export const EMPTY_STATE = { players: [], theme: 'system' };
+export const EMPTY_STATE = { players: [], theme: 'system', language: 'system' };
 
 export function isValidState(state) {
   return Boolean(
     state &&
     ['system', 'light', 'dark'].includes(state.theme) &&
+    (state.language === undefined || ['system', 'es', 'en', 'ca'].includes(state.language)) &&
     Array.isArray(state.players) &&
     (state.players.length === 0 || (state.players.length >= 2 && state.players.length <= 4)) &&
     state.players.every((player) =>
